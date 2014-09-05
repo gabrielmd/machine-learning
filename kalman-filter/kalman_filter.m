@@ -1,7 +1,9 @@
 function posterior_x = kalman_filter( k, x_0, p_0, input )
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
-
+% KALMAN_FILTER - this is a very simple implementation of a Kalman Filter
+% It considers that the input is constant with a Gaussian error
+%
+% Based on the description from:
+% http://bilgin.esme.org/BitsBytes/KalmanFilterforDummies.aspx
 format long;
 
 if k<= 0
