@@ -14,15 +14,20 @@ end
 
 i_k = 1;
 
+% Initial values
 posterior_x = x_0;
 posterior_error = p_0;
 
 while i_k <= k
-    % time update (prediction)
-    prior_x = posterior_x;
+    % Time update (prediction)
+    %  - the posterior values from the last time interval are now
+    %    considered as priors
+    prior_x = posterior_x; 
     prior_error = posterior_error;
     
-    % measurement update (correction)
+    % Measurement update (correction)
+    %  - calculating the value of the posterior based on the observed value
+    %    at time k (the value at 'input(i_k)')
     k_k = prior_error / (prior_error + 0.1);
     posterior_x = prior_x + (k_k * (input(i_k) - prior_x)); 
     posterior_error = (1 - k_k) * prior_error;
